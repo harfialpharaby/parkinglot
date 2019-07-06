@@ -89,7 +89,7 @@ public class Car {
         ArrayList<String> listNo=new ArrayList<String>();
         for(int i=0; i<id; i++){
             if(color[i]!=null && color[i].toLowerCase().contains(col.toLowerCase())){
-                listNo.add(no[i]);
+                listNo.add(no[i]); //list all reg no with same color
             }
         }
         if(listNo.size() > 0){
@@ -104,7 +104,7 @@ public class Car {
         ArrayList<Integer> listSlot=new ArrayList<Integer>();
         for(int i=0; i<id; i++){
             if(color[i]!=null && color[i].toLowerCase().contains(col.toLowerCase())){
-                listSlot.add(i+1);
+                listSlot.add(i+1); //list all slot with same color
             }
         }
         if(listSlot.size() > 0){
@@ -119,7 +119,7 @@ public class Car {
         int i;
         for(i=0; i<id; i++){
             if(no[i]!=null && no[i].contains(carNo)){
-                System.out.println(i+1);
+                System.out.println(i+1); //print first slot with registered no
                 break;
             }
         }
