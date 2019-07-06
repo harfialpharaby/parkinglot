@@ -33,7 +33,7 @@ public class Car {
                 System.out.println("Created a parking lot with "+id+" slots");
             }catch (NumberFormatException ex) {
                 //handle exception here
-                System.out.println("Failed created a parking lot!");
+                System.out.println("Failed to create a parking lot!");
             }
         }
     }
@@ -50,6 +50,8 @@ public class Car {
         }
         if(i<id){
             System.out.println("Allocated  slot number:" + (i+1));
+        }else if(id == 0){
+            System.out.println("Parking lot is not initialized yet!");
         }else{
             System.out.println("Sorry, parking lot is full");
         }
@@ -68,16 +70,16 @@ public class Car {
             }
         }catch(Exception ex){
             //handle exception here
-            System.out.println("Failed freeing slot!");
+            System.out.println("Failed to free a slot!");
         }
     }
     
     //define method status
     void status(){
-        System.out.println("Slot No. \t Registration No \t Colour");
+        System.out.println("Slot No. Registration No Colour");
         for(int i=0; i<id; i++){
             if(no[i]!=null && color[i]!=null){
-                System.out.println((i+1) +" \t "+ no[i] +" \t "+ color[i]);
+                System.out.println((i+1) +" "+ no[i] +" "+ color[i]);
             }
         }
     }
