@@ -33,7 +33,7 @@ public class Car {
                 System.out.println("Created a parking lot with "+id+" slots");
             }catch (NumberFormatException ex) {
                 //handle exception here
-                System.out.println("Failed created a parking lot");
+                System.out.println("Failed created a parking lot!");
             }
         }
     }
@@ -59,12 +59,16 @@ public class Car {
     void leave(String value){
         try{
             int val = Integer.parseInt(value)-1;
-            no[val] = null;
-            color[val] = null;
-            System.out.println("Slot number "+value+" is free");
+            if(no[val] == null && color[val] == null){
+                System.out.println("Slot number "+value+" is empty");
+            }else{
+                no[val] = null;
+                color[val] = null;
+                System.out.println("Slot number "+value+" is free");
+            }
         }catch(Exception ex){
             //handle exception here
-            System.out.println("Failed freeing slot");
+            System.out.println("Failed freeing slot!");
         }
     }
     
@@ -73,7 +77,7 @@ public class Car {
         System.out.println("Slot No. \t Registration No \t Colour");
         for(int i=0; i<id; i++){
             if(no[i]!=null && color[i]!=null){
-                System.out.println((i+1) +" \t\t "+ no[i] +" \t\t "+ color[i]);
+                System.out.println((i+1) +" \t "+ no[i] +" \t "+ color[i]);
             }
         }
     }
