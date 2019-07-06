@@ -5,6 +5,9 @@
  */
 package apps;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  *
  * @author Dataon
@@ -12,7 +15,6 @@ package apps;
 public class Car {
     // definisi atribut
     int id=0;
-    int available=0;
     String no[];
     String color[];
 
@@ -78,23 +80,45 @@ public class Car {
     
     //define registration no by color
     void getNoByColor(String col){
-        System.out.println(col);
-        /*String listNo="";
+        ArrayList<String> listNo=new ArrayList<String>();
         for(int i=0; i<id; i++){
-            if(color[i].contains("col")){
-                listNo = listNo + no[i] + ",";
+            if(color[i]!=null && color[i].toLowerCase().contains(col.toLowerCase())){
+                listNo.add(no[i]);
             }
         }
-        System.out.println(listNo);*/
+        if(listNo.size() > 0){
+            System.out.println(Arrays.toString(listNo.toArray()).replace("[", "").replace("]", ""));
+        }else{
+           System.out.println("Not Found"); 
+        }
     }
     
     //get slot by car color
-    void getSlotByColor(String color){
-        
+    void getSlotByColor(String col){
+        ArrayList<Integer> listSlot=new ArrayList<Integer>();
+        for(int i=0; i<id; i++){
+            if(color[i]!=null && color[i].toLowerCase().contains(col.toLowerCase())){
+                listSlot.add(i+1);
+            }
+        }
+        if(listSlot.size() > 0){
+            System.out.println(Arrays.toString(listSlot.toArray()).replace("[", "").replace("]", ""));
+        }else{
+           System.out.println("Not Found");
+        }
     }
     
     //get slot by registered car no
-    void getSlotByNo(String no){
-        
+    void getSlotByNo(String carNo){
+        int i;
+        for(i=0; i<id; i++){
+            if(no[i].contains(carNo)){
+                System.out.println(i+1);
+                break;
+            }
+        }
+        if(i==id){
+            System.out.println("Not Found");
+        }
     }
 }
