@@ -27,25 +27,29 @@ public class Apps {
     public static void main(String[] args) throws IOException{
         // TODO code application logic here
         Scanner myObj = new Scanner(System.in);
+        String Commands=null;
         String line = null;
         File file;
         FileReader fr;
         BufferedReader br = null;
         
         if (args.length > 0){
-            String filename = args[0];
-            file = new File(filename);
-            fr = new FileReader(file);
-            br = new BufferedReader(fr);
-            line = br.readLine();
+            try{
+                String filename = args[0];
+                file = new File(filename);
+                fr = new FileReader(file);
+                br = new BufferedReader(fr);
+                line = br.readLine();
+            }catch(Exception e){ //exception saat ada input file ngaco
+                System.out.println("File not Found!");
+                System.exit(1);
+            }
         }else{
             line=null;
         }
         
         // membuat objek player
         Car parking = new Car();
-
-        String Commands=null;
         do{
             if (args.length > 0){
                 Commands = line;
@@ -85,6 +89,6 @@ public class Apps {
                     System.out.println(splitCommand[0]+" command doesn't exist!");
                     break;
             }
-        }while(!Commands.contains("exit"));
+        }while(!Commands.toLowerCase().contains("exit")); //stop proses jika commands adalah exit
     }
 }
