@@ -112,7 +112,7 @@ public class Car {
     void getSlotByNo(String carNo){
         int i;
         for(i=0; i<id; i++){
-            if(no[i].contains(carNo)){
+            if(no[i]!=null && no[i].contains(carNo)){
                 System.out.println(i+1);
                 break;
             }
