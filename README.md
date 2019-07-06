@@ -10,5 +10,5 @@
  
  # How to Run Project
   Run the following commands
-  > $ java -jar bin/Apps.jar (interactive version) <br>
-  > $ java -jar bin/Apps.jar file_inputs.txt (file version)
+  > $ java -jar bin/parking_lot.jar (interactive version) <br>
+  > $ java -jar bin/parking_lot.jar file_inputs.txt (file version)
