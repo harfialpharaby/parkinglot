@@ -6,6 +6,9 @@
 package apps;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -24,14 +27,35 @@ public class Apps {
     public static void main(String[] args) throws IOException{
         // TODO code application logic here
         Scanner myObj = new Scanner(System.in);
+        String line = null;
+        File file;
+        FileReader fr;
+        BufferedReader br = null;
+        
+        if (args.length > 0){
+            String filename = args[0];
+            file = new File(filename);
+            fr = new FileReader(file);
+            br = new BufferedReader(fr);
+            line = br.readLine();
+        }else{
+            line=null;
+        }
         
         // membuat objek player
         Car parking = new Car();
 
         String Commands=null;
         do{
-            // Enter Commands and press Enter
-            Commands = myObj.nextLine();
+            if (args.length > 0){
+                Commands = line;
+                line = br.readLine();
+                if(line==null) Commands="exit";
+            }else{
+                // Enter Commands and press Enter
+                Commands = myObj.nextLine();
+            }
+            
             String[] splitCommand = Commands.split(" ");
             switch(splitCommand[0]){
                 case "create_parking_lot":
